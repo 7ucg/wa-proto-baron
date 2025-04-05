@@ -2,7 +2,11 @@
   "name": "wa-proto-baron",
   "version": "0.0.1",
   "description": "Protobuf files from WhatsApp WEB",
-  "license": "Apache-2.0",
+  "homepage": "https://github.com/7ucg/wa-proto-baron",
+  "repository": {
+    "url": "git@github.com:7ucg/wa-proto-baron.git"
+  },
+  "license": "MIT",
   "author": {
     "name": "Baron",
     "url": "https://github.com/7ucg"
