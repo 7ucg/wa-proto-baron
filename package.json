@@ -1,6 +1,6 @@
 {
   "name": "wa-proto-baron",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Protobuf files from WhatsApp WEB",
   "homepage": "https://github.com/7ucg/wa-proto-baron",
   "repository": {
