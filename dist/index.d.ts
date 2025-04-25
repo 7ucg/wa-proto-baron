@@ -3877,7 +3877,8 @@ export namespace proto {
             RICH_RESPONSE_LATEX_INLINE = 31,
             QUERY_PLAN = 32,
             PROACTIVE_MESSAGE = 33,
-            RICH_RESPONSE_UNIFIED_RESPONSE = 34
+            RICH_RESPONSE_UNIFIED_RESPONSE = 34,
+            PROMOTION_MESSAGE = 35
         }
     }
 
@@ -4718,6 +4719,9 @@ export namespace proto {
 
         /** BotMetadata aiConversationContext */
         aiConversationContext?: (Uint8Array|null);
+
+        /** BotMetadata botPromotionMessageMetadata */
+        botPromotionMessageMetadata?: (proto.IBotPromotionMessageMetadata|null);
     }
 
     /** Represents a BotMetadata. */
@@ -4788,6 +4792,9 @@ export namespace proto {
 
         /** BotMetadata aiConversationContext. */
         public aiConversationContext?: (Uint8Array|null);
+
+        /** BotMetadata botPromotionMessageMetadata. */
+        public botPromotionMessageMetadata?: (proto.IBotPromotionMessageMetadata|null);
 
         /**
          * Creates a new BotMetadata instance using the specified properties.
@@ -5909,6 +5916,118 @@ export namespace proto {
                 EXECUTING = 2,
                 FINISHED = 3
             }
+        }
+    }
+
+    /** Properties of a BotPromotionMessageMetadata. */
+    interface IBotPromotionMessageMetadata {
+
+        /** BotPromotionMessageMetadata promotionType */
+        promotionType?: (proto.BotPromotionMessageMetadata.BotPromotionType|null);
+
+        /** BotPromotionMessageMetadata buttonTitle */
+        buttonTitle?: (string|null);
+    }
+
+    /** Represents a BotPromotionMessageMetadata. */
+    class BotPromotionMessageMetadata implements IBotPromotionMessageMetadata {
+
+        /**
+         * Constructs a new BotPromotionMessageMetadata.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: proto.IBotPromotionMessageMetadata);
+
+        /** BotPromotionMessageMetadata promotionType. */
+        public promotionType?: (proto.BotPromotionMessageMetadata.BotPromotionType|null);
+
+        /** BotPromotionMessageMetadata buttonTitle. */
+        public buttonTitle?: (string|null);
+
+        /**
+         * Creates a new BotPromotionMessageMetadata instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BotPromotionMessageMetadata instance
+         */
+        public static create(properties?: proto.IBotPromotionMessageMetadata): proto.BotPromotionMessageMetadata;
+
+        /**
+         * Encodes the specified BotPromotionMessageMetadata message. Does not implicitly {@link proto.BotPromotionMessageMetadata.verify|verify} messages.
+         * @param message BotPromotionMessageMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: proto.IBotPromotionMessageMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BotPromotionMessageMetadata message, length delimited. Does not implicitly {@link proto.BotPromotionMessageMetadata.verify|verify} messages.
+         * @param message BotPromotionMessageMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: proto.IBotPromotionMessageMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BotPromotionMessageMetadata message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BotPromotionMessageMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.BotPromotionMessageMetadata;
+
+        /**
+         * Decodes a BotPromotionMessageMetadata message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BotPromotionMessageMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.BotPromotionMessageMetadata;
+
+        /**
+         * Verifies a BotPromotionMessageMetadata message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BotPromotionMessageMetadata message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BotPromotionMessageMetadata
+         */
+        public static fromObject(object: { [k: string]: any }): proto.BotPromotionMessageMetadata;
+
+        /**
+         * Creates a plain object from a BotPromotionMessageMetadata message. Also converts values to other types if specified.
+         * @param message BotPromotionMessageMetadata
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: proto.BotPromotionMessageMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BotPromotionMessageMetadata to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for BotPromotionMessageMetadata
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace BotPromotionMessageMetadata {
+
+        /** BotPromotionType enum. */
+        enum BotPromotionType {
+            UNKNOWN_TYPE = 0,
+            C50 = 1
         }
     }
 
@@ -11065,6 +11184,9 @@ export namespace proto {
 
             /** ExternalAdReplyInfo wtwaAdFormat */
             wtwaAdFormat?: (boolean|null);
+
+            /** ExternalAdReplyInfo adType */
+            adType?: (proto.ContextInfo.ExternalAdReplyInfo.AdType|null);
         }
 
         /** Represents an ExternalAdReplyInfo. */
@@ -11148,6 +11270,9 @@ export namespace proto {
             /** ExternalAdReplyInfo wtwaAdFormat. */
             public wtwaAdFormat?: (boolean|null);
 
+            /** ExternalAdReplyInfo adType. */
+            public adType?: (proto.ContextInfo.ExternalAdReplyInfo.AdType|null);
+
             /**
              * Creates a new ExternalAdReplyInfo instance using the specified properties.
              * @param [properties] Properties to set
@@ -11227,6 +11352,12 @@ export namespace proto {
         }
 
         namespace ExternalAdReplyInfo {
+
+            /** AdType enum. */
+            enum AdType {
+                CTWA = 0,
+                CAWC = 1
+            }
 
             /** MediaType enum. */
             enum MediaType {
@@ -12132,8 +12263,9 @@ export namespace proto {
         /** LimitSharingTrigger enum. */
         enum LimitSharingTrigger {
             UNKNOWN = 0,
-            USER_ACTION = 1,
-            ADMIN_POLICY = 2
+            CHAT_SETTING = 1,
+            BIZ_SUPPORTS_FB_HOSTING = 2,
+            UNKNOWN_GROUP = 3
         }
     }
 
@@ -27458,11 +27590,8 @@ export namespace proto {
             /** MessageHistoryBundle contextInfo */
             contextInfo?: (proto.IContextInfo|null);
 
-            /** MessageHistoryBundle historyReceivers */
-            historyReceivers?: (string[]|null);
-
-            /** MessageHistoryBundle firstMessageTimestamp */
-            firstMessageTimestamp?: (number|Long|null);
+            /** MessageHistoryBundle messageHistoryMetadata */
+            messageHistoryMetadata?: (proto.Message.IMessageHistoryMetadata|null);
         }
 
         /** Represents a MessageHistoryBundle. */
@@ -27495,11 +27624,8 @@ export namespace proto {
             /** MessageHistoryBundle contextInfo. */
             public contextInfo?: (proto.IContextInfo|null);
 
-            /** MessageHistoryBundle historyReceivers. */
-            public historyReceivers: string[];
-
-            /** MessageHistoryBundle firstMessageTimestamp. */
-            public firstMessageTimestamp?: (number|Long|null);
+            /** MessageHistoryBundle messageHistoryMetadata. */
+            public messageHistoryMetadata?: (proto.Message.IMessageHistoryMetadata|null);
 
             /**
              * Creates a new MessageHistoryBundle instance using the specified properties.
@@ -27573,6 +27699,218 @@ export namespace proto {
 
             /**
              * Gets the default type url for MessageHistoryBundle
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a MessageHistoryMetadata. */
+        interface IMessageHistoryMetadata {
+
+            /** MessageHistoryMetadata historyReceivers */
+            historyReceivers?: (string[]|null);
+
+            /** MessageHistoryMetadata firstMessageTimestamp */
+            firstMessageTimestamp?: (number|Long|null);
+
+            /** MessageHistoryMetadata messageCount */
+            messageCount?: (number|Long|null);
+        }
+
+        /** Represents a MessageHistoryMetadata. */
+        class MessageHistoryMetadata implements IMessageHistoryMetadata {
+
+            /**
+             * Constructs a new MessageHistoryMetadata.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: proto.Message.IMessageHistoryMetadata);
+
+            /** MessageHistoryMetadata historyReceivers. */
+            public historyReceivers: string[];
+
+            /** MessageHistoryMetadata firstMessageTimestamp. */
+            public firstMessageTimestamp?: (number|Long|null);
+
+            /** MessageHistoryMetadata messageCount. */
+            public messageCount?: (number|Long|null);
+
+            /**
+             * Creates a new MessageHistoryMetadata instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns MessageHistoryMetadata instance
+             */
+            public static create(properties?: proto.Message.IMessageHistoryMetadata): proto.Message.MessageHistoryMetadata;
+
+            /**
+             * Encodes the specified MessageHistoryMetadata message. Does not implicitly {@link proto.Message.MessageHistoryMetadata.verify|verify} messages.
+             * @param message MessageHistoryMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: proto.Message.IMessageHistoryMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MessageHistoryMetadata message, length delimited. Does not implicitly {@link proto.Message.MessageHistoryMetadata.verify|verify} messages.
+             * @param message MessageHistoryMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: proto.Message.IMessageHistoryMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MessageHistoryMetadata message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MessageHistoryMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.Message.MessageHistoryMetadata;
+
+            /**
+             * Decodes a MessageHistoryMetadata message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MessageHistoryMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.Message.MessageHistoryMetadata;
+
+            /**
+             * Verifies a MessageHistoryMetadata message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MessageHistoryMetadata message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MessageHistoryMetadata
+             */
+            public static fromObject(object: { [k: string]: any }): proto.Message.MessageHistoryMetadata;
+
+            /**
+             * Creates a plain object from a MessageHistoryMetadata message. Also converts values to other types if specified.
+             * @param message MessageHistoryMetadata
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: proto.Message.MessageHistoryMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MessageHistoryMetadata to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for MessageHistoryMetadata
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a MessageHistoryNotice. */
+        interface IMessageHistoryNotice {
+
+            /** MessageHistoryNotice contextInfo */
+            contextInfo?: (proto.IContextInfo|null);
+
+            /** MessageHistoryNotice messageHistoryMetadata */
+            messageHistoryMetadata?: (proto.Message.IMessageHistoryMetadata|null);
+        }
+
+        /** Represents a MessageHistoryNotice. */
+        class MessageHistoryNotice implements IMessageHistoryNotice {
+
+            /**
+             * Constructs a new MessageHistoryNotice.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: proto.Message.IMessageHistoryNotice);
+
+            /** MessageHistoryNotice contextInfo. */
+            public contextInfo?: (proto.IContextInfo|null);
+
+            /** MessageHistoryNotice messageHistoryMetadata. */
+            public messageHistoryMetadata?: (proto.Message.IMessageHistoryMetadata|null);
+
+            /**
+             * Creates a new MessageHistoryNotice instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns MessageHistoryNotice instance
+             */
+            public static create(properties?: proto.Message.IMessageHistoryNotice): proto.Message.MessageHistoryNotice;
+
+            /**
+             * Encodes the specified MessageHistoryNotice message. Does not implicitly {@link proto.Message.MessageHistoryNotice.verify|verify} messages.
+             * @param message MessageHistoryNotice message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: proto.Message.IMessageHistoryNotice, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MessageHistoryNotice message, length delimited. Does not implicitly {@link proto.Message.MessageHistoryNotice.verify|verify} messages.
+             * @param message MessageHistoryNotice message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: proto.Message.IMessageHistoryNotice, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MessageHistoryNotice message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MessageHistoryNotice
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.Message.MessageHistoryNotice;
+
+            /**
+             * Decodes a MessageHistoryNotice message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MessageHistoryNotice
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.Message.MessageHistoryNotice;
+
+            /**
+             * Verifies a MessageHistoryNotice message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MessageHistoryNotice message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MessageHistoryNotice
+             */
+            public static fromObject(object: { [k: string]: any }): proto.Message.MessageHistoryNotice;
+
+            /**
+             * Creates a plain object from a MessageHistoryNotice message. Also converts values to other types if specified.
+             * @param message MessageHistoryNotice
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: proto.Message.MessageHistoryNotice, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MessageHistoryNotice to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for MessageHistoryNotice
              * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns The default type url
              */
@@ -28339,6 +28677,9 @@ export namespace proto {
 
             /** PeerDataOperationRequestMessage fullHistorySyncOnDemandRequest */
             fullHistorySyncOnDemandRequest?: (proto.Message.PeerDataOperationRequestMessage.IFullHistorySyncOnDemandRequest|null);
+
+            /** PeerDataOperationRequestMessage syncdCollectionFatalRecoveryRequest */
+            syncdCollectionFatalRecoveryRequest?: (proto.Message.PeerDataOperationRequestMessage.ISyncDCollectionFatalRecoveryRequest|null);
         }
 
         /** Represents a PeerDataOperationRequestMessage. */
@@ -28367,6 +28708,9 @@ export namespace proto {
 
             /** PeerDataOperationRequestMessage fullHistorySyncOnDemandRequest. */
             public fullHistorySyncOnDemandRequest?: (proto.Message.PeerDataOperationRequestMessage.IFullHistorySyncOnDemandRequest|null);
+
+            /** PeerDataOperationRequestMessage syncdCollectionFatalRecoveryRequest. */
+            public syncdCollectionFatalRecoveryRequest?: (proto.Message.PeerDataOperationRequestMessage.ISyncDCollectionFatalRecoveryRequest|null);
 
             /**
              * Creates a new PeerDataOperationRequestMessage instance using the specified properties.
@@ -28974,6 +29318,109 @@ export namespace proto {
                  */
                 public static getTypeUrl(typeUrlPrefix?: string): string;
             }
+
+            /** Properties of a SyncDCollectionFatalRecoveryRequest. */
+            interface ISyncDCollectionFatalRecoveryRequest {
+
+                /** SyncDCollectionFatalRecoveryRequest collectionNames */
+                collectionNames?: (string[]|null);
+
+                /** SyncDCollectionFatalRecoveryRequest timestamp */
+                timestamp?: (number|Long|null);
+            }
+
+            /** Represents a SyncDCollectionFatalRecoveryRequest. */
+            class SyncDCollectionFatalRecoveryRequest implements ISyncDCollectionFatalRecoveryRequest {
+
+                /**
+                 * Constructs a new SyncDCollectionFatalRecoveryRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: proto.Message.PeerDataOperationRequestMessage.ISyncDCollectionFatalRecoveryRequest);
+
+                /** SyncDCollectionFatalRecoveryRequest collectionNames. */
+                public collectionNames: string[];
+
+                /** SyncDCollectionFatalRecoveryRequest timestamp. */
+                public timestamp?: (number|Long|null);
+
+                /**
+                 * Creates a new SyncDCollectionFatalRecoveryRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns SyncDCollectionFatalRecoveryRequest instance
+                 */
+                public static create(properties?: proto.Message.PeerDataOperationRequestMessage.ISyncDCollectionFatalRecoveryRequest): proto.Message.PeerDataOperationRequestMessage.SyncDCollectionFatalRecoveryRequest;
+
+                /**
+                 * Encodes the specified SyncDCollectionFatalRecoveryRequest message. Does not implicitly {@link proto.Message.PeerDataOperationRequestMessage.SyncDCollectionFatalRecoveryRequest.verify|verify} messages.
+                 * @param message SyncDCollectionFatalRecoveryRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: proto.Message.PeerDataOperationRequestMessage.ISyncDCollectionFatalRecoveryRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified SyncDCollectionFatalRecoveryRequest message, length delimited. Does not implicitly {@link proto.Message.PeerDataOperationRequestMessage.SyncDCollectionFatalRecoveryRequest.verify|verify} messages.
+                 * @param message SyncDCollectionFatalRecoveryRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: proto.Message.PeerDataOperationRequestMessage.ISyncDCollectionFatalRecoveryRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a SyncDCollectionFatalRecoveryRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns SyncDCollectionFatalRecoveryRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.Message.PeerDataOperationRequestMessage.SyncDCollectionFatalRecoveryRequest;
+
+                /**
+                 * Decodes a SyncDCollectionFatalRecoveryRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns SyncDCollectionFatalRecoveryRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.Message.PeerDataOperationRequestMessage.SyncDCollectionFatalRecoveryRequest;
+
+                /**
+                 * Verifies a SyncDCollectionFatalRecoveryRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a SyncDCollectionFatalRecoveryRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns SyncDCollectionFatalRecoveryRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): proto.Message.PeerDataOperationRequestMessage.SyncDCollectionFatalRecoveryRequest;
+
+                /**
+                 * Creates a plain object from a SyncDCollectionFatalRecoveryRequest message. Also converts values to other types if specified.
+                 * @param message SyncDCollectionFatalRecoveryRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: proto.Message.PeerDataOperationRequestMessage.SyncDCollectionFatalRecoveryRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this SyncDCollectionFatalRecoveryRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the default type url for SyncDCollectionFatalRecoveryRequest
+                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns The default type url
+                 */
+                public static getTypeUrl(typeUrlPrefix?: string): string;
+            }
         }
 
         /** Properties of a PeerDataOperationRequestResponseMessage. */
@@ -29110,6 +29557,9 @@ export namespace proto {
 
                 /** PeerDataOperationResult companionMetaNonceFetchRequestResponse */
                 companionMetaNonceFetchRequestResponse?: (proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ICompanionMetaNonceFetchResponse|null);
+
+                /** PeerDataOperationResult syncdSnapshotFatalRecoveryResponse */
+                syncdSnapshotFatalRecoveryResponse?: (proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ISyncDSnapshotFatalRecoveryResponse|null);
             }
 
             /** Represents a PeerDataOperationResult. */
@@ -29141,6 +29591,9 @@ export namespace proto {
 
                 /** PeerDataOperationResult companionMetaNonceFetchRequestResponse. */
                 public companionMetaNonceFetchRequestResponse?: (proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ICompanionMetaNonceFetchResponse|null);
+
+                /** PeerDataOperationResult syncdSnapshotFatalRecoveryResponse. */
+                public syncdSnapshotFatalRecoveryResponse?: (proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ISyncDSnapshotFatalRecoveryResponse|null);
 
                 /**
                  * Creates a new PeerDataOperationResult instance using the specified properties.
@@ -29799,6 +30252,109 @@ export namespace proto {
                     public static getTypeUrl(typeUrlPrefix?: string): string;
                 }
 
+                /** Properties of a SyncDSnapshotFatalRecoveryResponse. */
+                interface ISyncDSnapshotFatalRecoveryResponse {
+
+                    /** SyncDSnapshotFatalRecoveryResponse collectionSnapshot */
+                    collectionSnapshot?: (Uint8Array|null);
+
+                    /** SyncDSnapshotFatalRecoveryResponse isCompressed */
+                    isCompressed?: (boolean|null);
+                }
+
+                /** Represents a SyncDSnapshotFatalRecoveryResponse. */
+                class SyncDSnapshotFatalRecoveryResponse implements ISyncDSnapshotFatalRecoveryResponse {
+
+                    /**
+                     * Constructs a new SyncDSnapshotFatalRecoveryResponse.
+                     * @param [properties] Properties to set
+                     */
+                    constructor(properties?: proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ISyncDSnapshotFatalRecoveryResponse);
+
+                    /** SyncDSnapshotFatalRecoveryResponse collectionSnapshot. */
+                    public collectionSnapshot?: (Uint8Array|null);
+
+                    /** SyncDSnapshotFatalRecoveryResponse isCompressed. */
+                    public isCompressed?: (boolean|null);
+
+                    /**
+                     * Creates a new SyncDSnapshotFatalRecoveryResponse instance using the specified properties.
+                     * @param [properties] Properties to set
+                     * @returns SyncDSnapshotFatalRecoveryResponse instance
+                     */
+                    public static create(properties?: proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ISyncDSnapshotFatalRecoveryResponse): proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.SyncDSnapshotFatalRecoveryResponse;
+
+                    /**
+                     * Encodes the specified SyncDSnapshotFatalRecoveryResponse message. Does not implicitly {@link proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.SyncDSnapshotFatalRecoveryResponse.verify|verify} messages.
+                     * @param message SyncDSnapshotFatalRecoveryResponse message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    public static encode(message: proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ISyncDSnapshotFatalRecoveryResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Encodes the specified SyncDSnapshotFatalRecoveryResponse message, length delimited. Does not implicitly {@link proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.SyncDSnapshotFatalRecoveryResponse.verify|verify} messages.
+                     * @param message SyncDSnapshotFatalRecoveryResponse message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    public static encodeDelimited(message: proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ISyncDSnapshotFatalRecoveryResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Decodes a SyncDSnapshotFatalRecoveryResponse message from the specified reader or buffer.
+                     * @param reader Reader or buffer to decode from
+                     * @param [length] Message length if known beforehand
+                     * @returns SyncDSnapshotFatalRecoveryResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.SyncDSnapshotFatalRecoveryResponse;
+
+                    /**
+                     * Decodes a SyncDSnapshotFatalRecoveryResponse message from the specified reader or buffer, length delimited.
+                     * @param reader Reader or buffer to decode from
+                     * @returns SyncDSnapshotFatalRecoveryResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.SyncDSnapshotFatalRecoveryResponse;
+
+                    /**
+                     * Verifies a SyncDSnapshotFatalRecoveryResponse message.
+                     * @param message Plain object to verify
+                     * @returns `null` if valid, otherwise the reason why it is not
+                     */
+                    public static verify(message: { [k: string]: any }): (string|null);
+
+                    /**
+                     * Creates a SyncDSnapshotFatalRecoveryResponse message from a plain object. Also converts values to their respective internal types.
+                     * @param object Plain object
+                     * @returns SyncDSnapshotFatalRecoveryResponse
+                     */
+                    public static fromObject(object: { [k: string]: any }): proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.SyncDSnapshotFatalRecoveryResponse;
+
+                    /**
+                     * Creates a plain object from a SyncDSnapshotFatalRecoveryResponse message. Also converts values to other types if specified.
+                     * @param message SyncDSnapshotFatalRecoveryResponse
+                     * @param [options] Conversion options
+                     * @returns Plain object
+                     */
+                    public static toObject(message: proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.SyncDSnapshotFatalRecoveryResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                    /**
+                     * Converts this SyncDSnapshotFatalRecoveryResponse to JSON.
+                     * @returns JSON object
+                     */
+                    public toJSON(): { [k: string]: any };
+
+                    /**
+                     * Gets the default type url for SyncDSnapshotFatalRecoveryResponse
+                     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                     * @returns The default type url
+                     */
+                    public static getTypeUrl(typeUrlPrefix?: string): string;
+                }
+
                 /** Properties of a WaffleNonceFetchResponse. */
                 interface IWaffleNonceFetchResponse {
 
@@ -29913,7 +30469,8 @@ export namespace proto {
             PLACEHOLDER_MESSAGE_RESEND = 4,
             WAFFLE_LINKING_NONCE_FETCH = 5,
             FULL_HISTORY_SYNC_ON_DEMAND = 6,
-            COMPANION_META_NONCE_FETCH = 7
+            COMPANION_META_NONCE_FETCH = 7,
+            COMPANION_SYNCD_SNAPSHOT_FATAL_RECOVERY = 8
         }
 
         /** Properties of a PinInChatMessage. */
@@ -44798,7 +45355,8 @@ export namespace proto {
                 FAVORITES = 3,
                 PREDEFINED = 4,
                 CUSTOM = 5,
-                SERVER_ASSIGNED = 6
+                COMMUNITY = 6,
+                SERVER_ASSIGNED = 7
             }
         }
 

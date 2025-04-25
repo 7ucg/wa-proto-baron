@@ -1,7 +1,7 @@
 syntax = "proto3";
 package proto;
 
-/// WhatsApp Version: 2.3000.1022054384
+/// WhatsApp Version: 2.3000.1022237045
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -319,6 +319,7 @@ message BotCapabilityMetadata {
         QUERY_PLAN = 32;
         PROACTIVE_MESSAGE = 33;
         RICH_RESPONSE_UNIFIED_RESPONSE = 34;
+        PROMOTION_MESSAGE = 35;
     }
 }
 
@@ -397,6 +398,7 @@ message BotMetadata {
     optional BotLinkedAccountsMetadata botLinkedAccountsMetadata = 18;
     optional BotSourcesMetadata richResponseSourcesMetadata = 19;
     optional bytes aiConversationContext = 20;
+    optional BotPromotionMessageMetadata botPromotionMessageMetadata = 21;
 }
 
 enum BotMetricsEntryPoint {
@@ -525,6 +527,15 @@ message BotProgressIndicatorMetadata {
         }
     }
     
+}
+
+message BotPromotionMessageMetadata {
+    optional BotPromotionType promotionType = 1;
+    optional string buttonTitle = 2;
+    enum BotPromotionType {
+        UNKNOWN_TYPE = 0;
+        C50 = 1;
+    }
 }
 
 message BotPromptSuggestion {
@@ -1065,6 +1076,11 @@ message ContextInfo {
         optional string originalImageUrl = 22;
         optional string automatedGreetingMessageCtaType = 23;
         optional bool wtwaAdFormat = 24;
+        optional AdType adType = 25;
+        enum AdType {
+            CTWA = 0;
+            CAWC = 1;
+        }
         enum MediaType {
             NONE = 0;
             IMAGE = 1;
@@ -1178,10 +1194,11 @@ message Conversation {
     }
 
     enum LimitSharingTrigger {
-        UNKNOWN = 0;
-        USER_ACTION = 1;
-        ADMIN_POLICY = 2;
-    }
+    UNKNOWN = 0;
+    CHAT_SETTING = 1;
+    BIZ_SUPPORTS_FB_HOSTING = 2;
+    UNKNOWN_GROUP = 3;
+}
 }
 
 message DeviceCapabilities {
@@ -2466,8 +2483,18 @@ message Message {
         optional string directPath = 5;
         optional int64 mediaKeyTimestamp = 6;
         optional ContextInfo contextInfo = 7;
-        repeated string historyReceivers = 8;
-        optional int64 firstMessageTimestamp = 9;
+        optional Message.MessageHistoryMetadata messageHistoryMetadata = 8;
+    }
+    
+    message MessageHistoryMetadata {
+        repeated string historyReceivers = 1;
+        optional int64 firstMessageTimestamp = 2;
+        optional int64 messageCount = 3;
+    }
+    
+    message MessageHistoryNotice {
+        optional ContextInfo contextInfo = 1;
+        optional Message.MessageHistoryMetadata messageHistoryMetadata = 2;
     }
     
     message NewsletterAdminInviteMessage {
@@ -2539,6 +2566,7 @@ message Message {
         optional HistorySyncOnDemandRequest historySyncOnDemandRequest = 4;
         repeated PlaceholderMessageResendRequest placeholderMessageResendRequest = 5;
         optional FullHistorySyncOnDemandRequest fullHistorySyncOnDemandRequest = 6;
+        optional SyncDCollectionFatalRecoveryRequest syncdCollectionFatalRecoveryRequest = 7;
         message FullHistorySyncOnDemandRequest {
             optional Message.FullHistorySyncOnDemandRequestMetadata requestMetadata = 1;
             optional DeviceProps.HistorySyncConfig historySyncConfig = 2;
@@ -2566,6 +2594,11 @@ message Message {
             optional bool includeHqThumbnail = 2;
         }
         
+        message SyncDCollectionFatalRecoveryRequest {
+            repeated string collectionNames = 1;
+            optional int64 timestamp = 2;
+        }
+        
     }
     
     message PeerDataOperationRequestResponseMessage {
@@ -2580,6 +2613,7 @@ message Message {
             optional WaffleNonceFetchResponse waffleNonceFetchRequestResponse = 5;
             optional FullHistorySyncOnDemandRequestResponse fullHistorySyncOnDemandRequestResponse = 6;
             optional CompanionMetaNonceFetchResponse companionMetaNonceFetchRequestResponse = 7;
+            optional SyncDSnapshotFatalRecoveryResponse syncdSnapshotFatalRecoveryResponse = 8;
             message CompanionMetaNonceFetchResponse {
                 optional string nonce = 1;
             }
@@ -2622,6 +2656,11 @@ message Message {
                 optional bytes webMessageInfoBytes = 1;
             }
             
+            message SyncDSnapshotFatalRecoveryResponse {
+                optional bytes collectionSnapshot = 1;
+                optional bool isCompressed = 2;
+            }
+            
             message WaffleNonceFetchResponse {
                 optional string nonce = 1;
                 optional string waEntFbid = 2;
@@ -2640,6 +2679,7 @@ message Message {
         WAFFLE_LINKING_NONCE_FETCH = 5;
         FULL_HISTORY_SYNC_ON_DEMAND = 6;
         COMPANION_META_NONCE_FETCH = 7;
+        COMPANION_SYNCD_SNAPSHOT_FATAL_RECOVERY = 8;
     }
     message PinInChatMessage {
         optional MessageKey key = 1;
@@ -3810,7 +3850,8 @@ message SyncActionValue {
             FAVORITES = 3;
             PREDEFINED = 4;
             CUSTOM = 5;
-            SERVER_ASSIGNED = 6;
+            COMMUNITY = 6;
+            SERVER_ASSIGNED = 7;
         }
     }
     
