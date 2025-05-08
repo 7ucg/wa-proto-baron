@@ -1,7 +1,7 @@
 syntax = "proto3";
 package proto;
 
-/// WhatsApp Version: 2.3000.1022505785
+/// WhatsApp Version: 2.3000.1022642610
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -425,6 +425,9 @@ enum BotMetricsEntryPoint {
     AI_HOME = 19;
     AI_DEEPLINK_IMMERSIVE = 20;
     AI_DEEPLINK = 21;
+    META_AI_CHAT_SHORTCUT_AI_STUDIO = 22;
+    UGC_CHAT_SHORTCUT_AI_STUDIO = 23;
+    NEW_CHAT_AI_STUDIO = 24;
 }
 message BotMetricsMetadata {
     optional string destinationId = 1;
@@ -1045,6 +1048,7 @@ message ContextInfo {
     optional uint32 rankingVersion = 60;
     optional MemberLabel memberLabel = 62;
     optional bool isQuestion = 63;
+    optional StatusSourceType statusSourceType = 64;
     message AdReplyInfo {
         optional string advertiserName = 1;
         optional MediaType mediaType = 2;
@@ -1150,6 +1154,13 @@ message ContextInfo {
         RESHARED_FROM_MENTION = 1;
         RESHARED_FROM_POST = 2;
     }
+    enum StatusSourceType {
+        IMAGE = 0;
+        VIDEO = 1;
+        GIF = 2;
+        AUDIO = 3;
+        TEXT = 4;
+    }
     message UTMInfo {
         optional string utmSource = 1;
         optional string utmCampaign = 2;
@@ -1217,7 +1228,7 @@ message Conversation {
         COMPLETE_ON_DEMAND_SYNC_BUT_MORE_MSG_REMAIN_ON_PRIMARY = 2;
     }
 
-    enum LimitSharingTrigger {
+ enum LimitSharingTrigger {
     UNKNOWN = 0;
     CHAT_SETTING = 1;
     BIZ_SUPPORTS_FB_HOSTING = 2;
@@ -1748,6 +1759,7 @@ message Message {
     optional FutureProofMessage limitSharingMessage = 99;
     optional FutureProofMessage botTaskMessage = 100;
     optional FutureProofMessage questionMessage = 101;
+    optional MessageHistoryNotice messageHistoryNotice = 102;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
@@ -1925,6 +1937,7 @@ message Message {
         optional uint32 conversionDelaySeconds = 4;
         optional string ctwaSignals = 5;
         optional bytes ctwaPayload = 6;
+        optional ContextInfo contextInfo = 7;
     }
     
     message CallLogMessage {
@@ -2626,7 +2639,7 @@ message Message {
         }
         
         message SyncDCollectionFatalRecoveryRequest {
-            repeated string collectionNames = 1;
+            optional string collectionName = 1;
             optional int64 timestamp = 2;
         }
         

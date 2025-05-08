@@ -4908,7 +4908,10 @@ export namespace proto {
         AI_TAB = 18,
         AI_HOME = 19,
         AI_DEEPLINK_IMMERSIVE = 20,
-        AI_DEEPLINK = 21
+        AI_DEEPLINK = 21,
+        META_AI_CHAT_SHORTCUT_AI_STUDIO = 22,
+        UGC_CHAT_SHORTCUT_AI_STUDIO = 23,
+        NEW_CHAT_AI_STUDIO = 24
     }
 
     /** Properties of a BotMetricsMetadata. */
@@ -10762,6 +10765,9 @@ export namespace proto {
 
         /** ContextInfo isQuestion */
         isQuestion?: (boolean|null);
+
+        /** ContextInfo statusSourceType */
+        statusSourceType?: (proto.ContextInfo.StatusSourceType|null);
     }
 
     /** Represents a ContextInfo. */
@@ -10910,6 +10916,9 @@ export namespace proto {
 
         /** ContextInfo isQuestion. */
         public isQuestion?: (boolean|null);
+
+        /** ContextInfo statusSourceType. */
+        public statusSourceType?: (proto.ContextInfo.StatusSourceType|null);
 
         /**
          * Creates a new ContextInfo instance using the specified properties.
@@ -12072,6 +12081,15 @@ export namespace proto {
             NONE = 0,
             RESHARED_FROM_MENTION = 1,
             RESHARED_FROM_POST = 2
+        }
+
+        /** StatusSourceType enum. */
+        enum StatusSourceType {
+            IMAGE = 0,
+            VIDEO = 1,
+            GIF = 2,
+            AUDIO = 3,
+            TEXT = 4
         }
 
         /** Properties of a UTMInfo. */
@@ -18467,6 +18485,9 @@ export namespace proto {
 
         /** Message questionMessage */
         questionMessage?: (proto.Message.IFutureProofMessage|null);
+
+        /** Message messageHistoryNotice */
+        messageHistoryNotice?: (proto.Message.IMessageHistoryNotice|null);
     }
 
     /** Represents a Message. */
@@ -18732,6 +18753,9 @@ export namespace proto {
 
         /** Message questionMessage. */
         public questionMessage?: (proto.Message.IFutureProofMessage|null);
+
+        /** Message messageHistoryNotice. */
+        public messageHistoryNotice?: (proto.Message.IMessageHistoryNotice|null);
 
         /**
          * Creates a new Message instance using the specified properties.
@@ -20759,6 +20783,9 @@ export namespace proto {
 
             /** Call ctwaPayload */
             ctwaPayload?: (Uint8Array|null);
+
+            /** Call contextInfo */
+            contextInfo?: (proto.IContextInfo|null);
         }
 
         /** Represents a Call. */
@@ -20787,6 +20814,9 @@ export namespace proto {
 
             /** Call ctwaPayload. */
             public ctwaPayload?: (Uint8Array|null);
+
+            /** Call contextInfo. */
+            public contextInfo?: (proto.IContextInfo|null);
 
             /**
              * Creates a new Call instance using the specified properties.
@@ -29773,8 +29803,8 @@ export namespace proto {
             /** Properties of a SyncDCollectionFatalRecoveryRequest. */
             interface ISyncDCollectionFatalRecoveryRequest {
 
-                /** SyncDCollectionFatalRecoveryRequest collectionNames */
-                collectionNames?: (string[]|null);
+                /** SyncDCollectionFatalRecoveryRequest collectionName */
+                collectionName?: (string|null);
 
                 /** SyncDCollectionFatalRecoveryRequest timestamp */
                 timestamp?: (number|Long|null);
@@ -29789,8 +29819,8 @@ export namespace proto {
                  */
                 constructor(properties?: proto.Message.PeerDataOperationRequestMessage.ISyncDCollectionFatalRecoveryRequest);
 
-                /** SyncDCollectionFatalRecoveryRequest collectionNames. */
-                public collectionNames: string[];
+                /** SyncDCollectionFatalRecoveryRequest collectionName. */
+                public collectionName?: (string|null);
 
                 /** SyncDCollectionFatalRecoveryRequest timestamp. */
                 public timestamp?: (number|Long|null);
