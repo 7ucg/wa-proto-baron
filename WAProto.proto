@@ -1,7 +1,7 @@
 syntax = "proto3";
 package proto;
 
-/// WhatsApp Version: 2.3000.1022856603
+/// WhatsApp Version: 2.3000.1022880296
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -3788,6 +3788,7 @@ message SyncActionValue {
     optional NotificationActivitySettingAction notificationActivitySettingAction = 60;
     optional LidContactAction lidContactAction = 61;
     optional CtwaPerCustomerDataSharingAction ctwaPerCustomerDataSharingAction = 62;
+    optional PaymentTosAction paymentTosAction = 63;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceID = 2;
@@ -3993,6 +3994,14 @@ message SyncActionValue {
     
     message PaymentInfoAction {
         optional string cpi = 1;
+    }
+    
+    message PaymentTosAction {
+        optional PaymentNotice paymentNotice = 1;
+        optional bool accepted = 2;
+        enum PaymentNotice {
+            BR_PAY_PRIVACY_POLICY = 0;
+        }
     }
     
     message PinAction {

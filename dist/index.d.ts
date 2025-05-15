@@ -43415,6 +43415,9 @@ export namespace proto {
 
         /** SyncActionValue ctwaPerCustomerDataSharingAction */
         ctwaPerCustomerDataSharingAction?: (proto.SyncActionValue.ICtwaPerCustomerDataSharingAction|null);
+
+        /** SyncActionValue paymentTosAction */
+        paymentTosAction?: (proto.SyncActionValue.IPaymentTosAction|null);
     }
 
     /** Represents a SyncActionValue. */
@@ -43593,6 +43596,9 @@ export namespace proto {
 
         /** SyncActionValue ctwaPerCustomerDataSharingAction. */
         public ctwaPerCustomerDataSharingAction?: (proto.SyncActionValue.ICtwaPerCustomerDataSharingAction|null);
+
+        /** SyncActionValue paymentTosAction. */
+        public paymentTosAction?: (proto.SyncActionValue.IPaymentTosAction|null);
 
         /**
          * Creates a new SyncActionValue instance using the specified properties.
@@ -47362,6 +47368,117 @@ export namespace proto {
              * @returns The default type url
              */
             public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a PaymentTosAction. */
+        interface IPaymentTosAction {
+
+            /** PaymentTosAction paymentNotice */
+            paymentNotice?: (proto.SyncActionValue.PaymentTosAction.PaymentNotice|null);
+
+            /** PaymentTosAction accepted */
+            accepted?: (boolean|null);
+        }
+
+        /** Represents a PaymentTosAction. */
+        class PaymentTosAction implements IPaymentTosAction {
+
+            /**
+             * Constructs a new PaymentTosAction.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: proto.SyncActionValue.IPaymentTosAction);
+
+            /** PaymentTosAction paymentNotice. */
+            public paymentNotice?: (proto.SyncActionValue.PaymentTosAction.PaymentNotice|null);
+
+            /** PaymentTosAction accepted. */
+            public accepted?: (boolean|null);
+
+            /**
+             * Creates a new PaymentTosAction instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns PaymentTosAction instance
+             */
+            public static create(properties?: proto.SyncActionValue.IPaymentTosAction): proto.SyncActionValue.PaymentTosAction;
+
+            /**
+             * Encodes the specified PaymentTosAction message. Does not implicitly {@link proto.SyncActionValue.PaymentTosAction.verify|verify} messages.
+             * @param message PaymentTosAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: proto.SyncActionValue.IPaymentTosAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified PaymentTosAction message, length delimited. Does not implicitly {@link proto.SyncActionValue.PaymentTosAction.verify|verify} messages.
+             * @param message PaymentTosAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: proto.SyncActionValue.IPaymentTosAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a PaymentTosAction message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns PaymentTosAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.SyncActionValue.PaymentTosAction;
+
+            /**
+             * Decodes a PaymentTosAction message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns PaymentTosAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.SyncActionValue.PaymentTosAction;
+
+            /**
+             * Verifies a PaymentTosAction message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a PaymentTosAction message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns PaymentTosAction
+             */
+            public static fromObject(object: { [k: string]: any }): proto.SyncActionValue.PaymentTosAction;
+
+            /**
+             * Creates a plain object from a PaymentTosAction message. Also converts values to other types if specified.
+             * @param message PaymentTosAction
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: proto.SyncActionValue.PaymentTosAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this PaymentTosAction to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for PaymentTosAction
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace PaymentTosAction {
+
+            /** PaymentNotice enum. */
+            enum PaymentNotice {
+                BR_PAY_PRIVACY_POLICY = 0
+            }
         }
 
         /** Properties of a PinAction. */
