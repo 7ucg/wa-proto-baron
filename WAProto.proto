@@ -1,7 +1,7 @@
 syntax = "proto3";
 package proto;
 
-/// WhatsApp Version: 2.3000.1022642610
+/// WhatsApp Version: 2.3000.1022856603
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -273,6 +273,11 @@ message BizIdentityInfo {
     }
 }
 
+message BotAgeCollectionMetadata {
+    optional bool ageCollectionEligible = 1;
+    optional bool shouldTriggerAgeCollectionOnClient = 2;
+}
+
 message BotAvatarMetadata {
     optional uint32 sentiment = 1;
     optional string behaviorGraph = 2;
@@ -401,6 +406,7 @@ message BotMetadata {
     optional BotPromotionMessageMetadata botPromotionMessageMetadata = 21;
     optional BotModeSelectionMetadata botModeSelectionMetadata = 22;
     optional BotQuotaMetadata botQuotaMetadata = 23;
+    optional BotAgeCollectionMetadata botAgeCollectionMetadata = 24;
 }
 
 enum BotMetricsEntryPoint {
@@ -1160,6 +1166,7 @@ message ContextInfo {
         GIF = 2;
         AUDIO = 3;
         TEXT = 4;
+        MUSIC_STANDALONE = 5;
     }
     message UTMInfo {
         optional string utmSource = 1;
@@ -1228,7 +1235,7 @@ message Conversation {
         COMPLETE_ON_DEMAND_SYNC_BUT_MORE_MSG_REMAIN_ON_PRIMARY = 2;
     }
 
- enum LimitSharingTrigger {
+    enum LimitSharingTrigger {
     UNKNOWN = 0;
     CHAT_SETTING = 1;
     BIZ_SUPPORTS_FB_HOSTING = 2;
