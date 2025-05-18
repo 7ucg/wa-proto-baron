@@ -1,7 +1,7 @@
 syntax = "proto3";
 package proto;
 
-/// WhatsApp Version: 2.3000.1022880296
+/// WhatsApp Version: 2.3000.1022951705
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1154,6 +1154,8 @@ message ContextInfo {
         HD_VIDEO_CHILD = 2;
         SD_IMAGE_PARENT = 3;
         HD_IMAGE_CHILD = 4;
+        MOTION_PHOTO_PARENT = 5;
+        MOTION_PHOTO_CHILD = 6;
     }
     enum StatusAttributionType {
         NONE = 0;
@@ -1234,7 +1236,6 @@ message Conversation {
         COMPLETE_AND_NO_MORE_MESSAGE_REMAIN_ON_PRIMARY = 1;
         COMPLETE_ON_DEMAND_SYNC_BUT_MORE_MSG_REMAIN_ON_PRIMARY = 2;
     }
-
     enum LimitSharingTrigger {
     UNKNOWN = 0;
     CHAT_SETTING = 1;
