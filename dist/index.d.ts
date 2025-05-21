@@ -12465,7 +12465,7 @@ export namespace proto {
         limitSharingSettingTimestamp?: (number|Long|null);
 
         /** Conversation limitSharingTrigger */
-        limitSharingTrigger?: (proto.Conversation.LimitSharingTrigger|null);
+        limitSharingTrigger?: (proto.LimitSharing.TriggerType|null);
 
         /** Conversation limitSharingInitiatedByMe */
         limitSharingInitiatedByMe?: (boolean|null);
@@ -12634,7 +12634,7 @@ export namespace proto {
         public limitSharingSettingTimestamp?: (number|Long|null);
 
         /** Conversation limitSharingTrigger. */
-        public limitSharingTrigger?: (proto.Conversation.LimitSharingTrigger|null);
+        public limitSharingTrigger?: (proto.LimitSharing.TriggerType|null);
 
         /** Conversation limitSharingInitiatedByMe. */
         public limitSharingInitiatedByMe?: (boolean|null);
@@ -12724,14 +12724,6 @@ export namespace proto {
             COMPLETE_BUT_MORE_MESSAGES_REMAIN_ON_PRIMARY = 0,
             COMPLETE_AND_NO_MORE_MESSAGE_REMAIN_ON_PRIMARY = 1,
             COMPLETE_ON_DEMAND_SYNC_BUT_MORE_MSG_REMAIN_ON_PRIMARY = 2
-        }
-
-        /** LimitSharingTrigger enum. */
-        enum LimitSharingTrigger {
-            UNKNOWN = 0,
-            CHAT_SETTING = 1,
-            BIZ_SUPPORTS_FB_HOSTING = 2,
-            UNKNOWN_GROUP = 3
         }
     }
 
@@ -17561,7 +17553,7 @@ export namespace proto {
         sharingLimited?: (boolean|null);
 
         /** LimitSharing trigger */
-        trigger?: (proto.LimitSharing.Trigger|null);
+        trigger?: (proto.LimitSharing.TriggerType|null);
 
         /** LimitSharing limitSharingSettingTimestamp */
         limitSharingSettingTimestamp?: (number|Long|null);
@@ -17583,7 +17575,7 @@ export namespace proto {
         public sharingLimited?: (boolean|null);
 
         /** LimitSharing trigger. */
-        public trigger?: (proto.LimitSharing.Trigger|null);
+        public trigger?: (proto.LimitSharing.TriggerType|null);
 
         /** LimitSharing limitSharingSettingTimestamp. */
         public limitSharingSettingTimestamp?: (number|Long|null);
@@ -17671,8 +17663,8 @@ export namespace proto {
 
     namespace LimitSharing {
 
-        /** Trigger enum. */
-        enum Trigger {
+        /** TriggerType enum. */
+        enum TriggerType {
             UNKNOWN = 0,
             CHAT_SETTING = 1,
             BIZ_SUPPORTS_FB_HOSTING = 2,
@@ -53359,7 +53351,8 @@ export namespace proto {
             BIZ_CUSTOMER_3PD_DATA_SHARING_OPT_IN_MESSAGE = 214,
             BIZ_CUSTOMER_3PD_DATA_SHARING_OPT_OUT_MESSAGE = 215,
             CHANGE_LIMIT_SHARING = 216,
-            GROUP_MEMBER_LINK_MODE = 217
+            GROUP_MEMBER_LINK_MODE = 217,
+            BIZ_AUTOMATICALLY_LABELED_CHAT_SYSTEM_MESSAGE = 218
         }
     }
 

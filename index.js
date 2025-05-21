@@ -1,4 +1,3 @@
-
 const request = require('request-promise-native');
 const acorn = require('acorn');
 const walk = require('acorn-walk');
@@ -77,11 +76,10 @@ async function findAppModules() {
 
   // This one list of types is so long that it's split into two JavaScript declarations.
   // The module finder below can't handle it, so just patch it manually here.
-  const patchedQrData = qrData.replace(
-    't.ActionLinkSpec=void 0,t.TemplateButtonSpec',
-    't.ActionLinkSpec=t.TemplateButtonSpec'
+  const patchedQrData = qrData.replaceAll(
+    'LimitSharing$Trigger',
+    'LimitSharing$TriggerType'
   );
-  //const patchedQrData = qrData.replace("Spec=void 0,t.", "Spec=t.")
 
   const qrModules = acorn.parse(patchedQrData).body;
   
@@ -150,7 +148,8 @@ async function findAppModules() {
         if(
             left.property?.name && 
             left.property?.name !== 'internalSpec' && 
-            left.property?.name !== 'internalDefaults'
+            left.property?.name !== 'internalDefaults' &&
+            left.property?.name !== 'name'
         ) {
           assignments.push(left);
         }
@@ -500,7 +499,7 @@ async function findAppModules() {
   const decodedProto = Object.keys(decodedProtoMap).sort();
   const sortedStr = decodedProto.map((d) => decodedProtoMap[d]).join('\n');
 
-  const decodedProtoStr = `syntax = "proto3";\npackage waproto;\n\n/// WhatsApp Version: ${whatsAppVersion}\n\n${sortedStr}`;
+  const decodedProtoStr = `syntax = "proto3";\npackage proto;\n\n/// WhatsApp Version: ${whatsAppVersion}\n\n${sortedStr}`;
   const destinationPath = 'WAProto.proto';
   await fs.writeFile(destinationPath, decodedProtoStr);
 
