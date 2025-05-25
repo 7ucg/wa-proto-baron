@@ -15,14 +15,13 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "npm run fetch && npm run compile",
+    "build2": "npm run fetch2 && npm run generate",
     "compile": "npm run compile:js && npm run compile:ts",
     "compile:js": "pbjs -t static-module --sparse -w commonjs -o ./dist/index.js ./WAProto.proto",
     "compile:ts": "pbts -o ./dist/index.d.ts ./dist/index.js",
     "fetch": "node index.js",
-    "changelog:last": "conventional-changelog -p angular -r 2",
-    "changelog:preview": "conventional-changelog -p angular -u",
-    "changelog:update": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "release": "release-it"
+    "fetch2": "node index2.js",
+    "generate": "node generate-proto.js"
   },
   "dependencies": {
     "long": "^5.3.2",
