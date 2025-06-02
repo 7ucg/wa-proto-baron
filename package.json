@@ -21,6 +21,7 @@
     "compile:ts": "pbts -o ./dist/index.d.ts ./dist/index.js",
     "fetch": "node index.js",
     "fetch2": "node index2.js",
+    "fetch3": "npm run fetch && npm run fetch2",
     "generate": "node generate-proto.js"
   },
   "dependencies": {
