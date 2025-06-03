@@ -16,6 +16,7 @@
   "scripts": {
     "build": "npm run fetch && npm run compile",
     "build2": "npm run fetch2 && npm run generate",
+    "build3": "npm run compile && npm run generate",
     "compile": "npm run compile:js && npm run compile:ts",
     "compile:js": "pbjs -t static-module --sparse -w commonjs -o ./dist/index.js ./WAProto.proto",
     "compile:ts": "pbts -o ./dist/index.d.ts ./dist/index.js",
