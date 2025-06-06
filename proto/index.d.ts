@@ -15,12 +15,13 @@ import { Reporting } from './Reporting'
 import { ServerSync } from './ServerSync'
 import { SignalLocalStorageProtocol } from './SignalLocalStorageProtocol'
 import { SignalWhisperTextProtocol } from './SignalWhisperTextProtocol'
+import { StatusAttributions } from './StatusAttributions'
 import { SyncAction } from './SyncAction'
 import { UserPassword } from './UserPassword'
 import { VnameCert } from './VnameCert'
 import { Wa6 } from './Wa6'
 import { Web } from './Web'
-
+//exports.StatusAttributions = require('./StatusAttributions/StatusAttributions').StatusAttributions;
 const proto = {
   ...Adv,
   ...Cert,
@@ -39,6 +40,7 @@ const proto = {
   ...ServerSync,
   ...SignalLocalStorageProtocol, 
   ...SignalWhisperTextProtocol, 
+  ...StatusAttributions,
   ...SyncAction,
   ...UserPassword,
   ...VnameCert,
